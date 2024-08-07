@@ -16,16 +16,12 @@ const FormLogin = () => {
 
     return (
         <View style={styles.container}>
-
-            <View>
             <TextInput
                 style={styles.input}
                 placeholder='Nombre de usuario'
                 value={usuario.nombre}
                 onChangeText={texto => manejarCambio('nombre', texto)}
             />
-            </View>
-            
 
             <View style={styles.inputContainer}>
                 <TextInput
@@ -33,7 +29,7 @@ const FormLogin = () => {
                     secureTextEntry={!mostrarContraseña}
                     value={usuario.contraseña}
                     onChangeText={texto => manejarCambio('contraseña', texto)}
-                    style={[styles.input, styles.passwordInput]}
+                    style={styles.passwordInput}
                 />
                 <TouchableOpacity
                     style={styles.eyeIcon}
@@ -46,11 +42,18 @@ const FormLogin = () => {
                     />
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity>
+
+            <TouchableOpacity style={styles.boton}>
                 <Text style={styles.textoBoton}>LogIn</Text>
             </TouchableOpacity>
 
-            
+            <View style={styles.dividerContainer}>
+                <Text style={styles.dividerText}>o</Text>
+            </View>
+
+            <TouchableOpacity style={styles.linkContainer}>
+                <Text style={styles.linkText}>No tenes cuenta? Registrate</Text>
+            </TouchableOpacity>
         </View>
     );
 };
@@ -59,50 +62,70 @@ export default FormLogin;
 
 const styles = StyleSheet.create({
     textoBoton: { 
-        borderWidth: 1,
-        borderColor: '#000', 
         borderRadius: 5, 
         paddingVertical: 10, 
         paddingHorizontal: 20, 
-        backgroundColor: '#fff', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
         fontSize: 16, 
-        color: '#000', 
-        width: 100,
-        height: 40,
-        width: '50%'
-      },
+        color: '#fff', 
+        textAlign: 'center',
+        width: '100%'
+    },
     container: {
         width: '100%',
         height: '100%',
         backgroundColor: '#fff',
-        padding: '15em',
+        padding: '10%',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
-        marginTop: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        backgroundColor: '#fff',
         marginBottom: 20,
+        height: 45,
+        width: '100%',
     },
     input: {
-        flex: 1,
         borderColor: '#ccc',
         borderWidth: 1,
         padding: 10,
         borderRadius: 5,
-        marginRight: 10,
         backgroundColor: '#fff',
         marginBottom: 20,
-        height: 45
+        height: 45,
+        width: '100%',
     },
     passwordInput: {
         flex: 1,
+        padding: 10,
     },
     eyeIcon: {
         padding: 10,
     },
-
+    boton: {
+        backgroundColor: '#28a745',
+        borderRadius: 5,
+        marginVertical: 10,
+        width: '100%',
+        alignItems: 'center',
+    },
+    linkText: {
+        color: '#0366d6',
+        textAlign: 'center',
+    },
+    dividerContainer: {
+        marginVertical: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    dividerText: {
+        color: '#666',
+        fontSize: 16,
+        textAlign: 'center',
+    },
 });
