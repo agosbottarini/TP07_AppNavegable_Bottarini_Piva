@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { View, TextInput, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; 
 
 const FormLogin = () => {
@@ -16,12 +16,16 @@ const FormLogin = () => {
 
     return (
         <View style={styles.container}>
+
+            <View>
             <TextInput
+                style={styles.input}
                 placeholder='Nombre de usuario'
                 value={usuario.nombre}
                 onChangeText={texto => manejarCambio('nombre', texto)}
-                style={styles.input}
             />
+            </View>
+            
 
             <View style={styles.inputContainer}>
                 <TextInput
@@ -42,6 +46,9 @@ const FormLogin = () => {
                     />
                 </TouchableOpacity>
             </View>
+            <TouchableOpacity>
+                <Text style={styles.textoBoton}>LogIn</Text>
+            </TouchableOpacity>
 
             
         </View>
@@ -51,14 +58,33 @@ const FormLogin = () => {
 export default FormLogin;
 
 const styles = StyleSheet.create({
+    textoBoton: { 
+        borderWidth: 1,
+        borderColor: '#000', 
+        borderRadius: 5, 
+        paddingVertical: 10, 
+        paddingHorizontal: 20, 
+        backgroundColor: '#fff', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        fontSize: 16, 
+        color: '#000', 
+        width: 100,
+        height: 40,
+        width: '50%'
+      },
     container: {
-        padding: 20,
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#fff',
+        padding: '15em',
     },
     inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         borderBottomWidth: 1,
         borderBottomColor: '#ccc',
+        marginTop: 10,
         marginBottom: 20,
     },
     input: {
@@ -69,6 +95,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginRight: 10,
         backgroundColor: '#fff',
+        marginBottom: 20,
+        height: 45
     },
     passwordInput: {
         flex: 1,
@@ -76,4 +104,5 @@ const styles = StyleSheet.create({
     eyeIcon: {
         padding: 10,
     },
+
 });
