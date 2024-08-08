@@ -1,26 +1,31 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; 
 
-const FormLogin = () => {
+
+
+const FormLogin = ({navigation}) => {
     const [usuario, setUsuario] = useState({ nombre: '', contraseña: '' });
     const [mostrarContraseña, setMostrarContraseña] = useState(false);
-
     const manejarCambio = (campo, valor) => {
         setUsuario(prevUsuario => ({
             ...prevUsuario,
             [campo]: valor
         }));
+        navigation.navigate("Register")
     };
 
+    
+
     return (
+        <>
         <View style={styles.container}>
             <TextInput
                 style={styles.input}
                 placeholder='Nombre de usuario'
                 value={usuario.nombre}
-                onChangeText={texto => manejarCambio('nombre', texto)}
+                onChangeText={setUsuario}
             />
 
             <View style={styles.inputContainer}>
@@ -28,7 +33,7 @@ const FormLogin = () => {
                     placeholder='Contraseña'
                     secureTextEntry={!mostrarContraseña}
                     value={usuario.contraseña}
-                    onChangeText={texto => manejarCambio('contraseña', texto)}
+                    onChangeText={setMostrarContraseña}
                     style={styles.passwordInput}
                 />
                 <TouchableOpacity
@@ -51,10 +56,11 @@ const FormLogin = () => {
                 <Text style={styles.dividerText}>o</Text>
             </View>
 
-            <TouchableOpacity style={styles.linkContainer}>
+            <TouchableOpacity style={styles.linkContainer} onPress={() => navigation.navigete("Register")}>
                 <Text style={styles.linkText}>No tenes cuenta? Registrate</Text>
             </TouchableOpacity>
         </View>
+        </>
     );
 };
 
